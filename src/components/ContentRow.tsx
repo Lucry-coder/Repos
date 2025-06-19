@@ -10,6 +10,7 @@ interface ContentRowProps {
   onAddToList: (movie: Movie) => void;
   onMoreInfo: (movie: Movie) => void;
   isMyListRow?: boolean;
+  myList?: string[];
 }
 
 export const ContentRow: React.FC<ContentRowProps> = ({
@@ -19,12 +20,12 @@ export const ContentRow: React.FC<ContentRowProps> = ({
   onAddToList,
   onMoreInfo,
   isMyListRow = false,
+  myList = [],
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [hoveredMovie, setHoveredMovie] = useState<string | null>(null);
-  const [myList] = useLocalStorage<string[]>('project-mylist', []);
 
   const scroll = (direction: 'left' | 'right') => {
     if (!scrollRef.current) return;

@@ -166,6 +166,7 @@ function App() {
           onPlay={handlePlay}
           onAddToList={handleAddToList}
           onMoreInfo={handleMoreInfo}
+          myList={myList}
         />
       ) : (
         <>
@@ -190,6 +191,7 @@ function App() {
                   onAddToList={handleAddToList}
                   onMoreInfo={handleMoreInfo}
                   isMyListRow={row.id === 'mylist'}
+                  myList={myList}
                 />
               </div>
             ))}

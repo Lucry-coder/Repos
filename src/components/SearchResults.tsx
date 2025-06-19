@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Plus, Info } from 'lucide-react';
+import { Play, Plus, Info, X } from 'lucide-react';
 import { Movie } from '../types';
 
 interface SearchResultsProps {
@@ -8,6 +8,7 @@ interface SearchResultsProps {
   onPlay: (movie: Movie) => void;
   onAddToList: (movie: Movie) => void;
   onMoreInfo: (movie: Movie) => void;
+  myList?: string[];
 }
 
 export const SearchResults: React.FC<SearchResultsProps> = ({
@@ -16,6 +17,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   onPlay,
   onAddToList,
   onMoreInfo,
+  myList = [],
 }) => {
   if (!query) return null;
 
@@ -33,6 +35,8 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pb-20">
           {results.map((movie) => (
+            const isInMyList = myList.includes(movie.id);
+            
             <div
               key={movie.id}
               className="group cursor-pointer"
@@ -74,9 +78,20 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                        e.stopPropagation();
                        onAddToList(movie);
                      }}
-                      className="bg-gray-700/80 text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
+                      className={`p-2 rounded-full transition-all duration-200 group/button ${
+                        isInMyList
+                          ? 'bg-gray-700/80 text-white hover:bg-red-500'
+                          : 'bg-gray-700/80 text-white hover:bg-green-500'
+                      }`}
                     >
-                      <Plus size={16} />
+                      {isInMyList ? (
+                        <>
+                          <Plus size={16} className="group-hover/button:hidden" />
+                          <X size={16} className="hidden group-hover/button:block" />
+                        </>
+                      ) : (
+                        <Plus size={16} />
+                      )}
                     </button>
                     <button
                      onClick={(e) => {
