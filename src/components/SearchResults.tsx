@@ -34,10 +34,11 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
         </div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pb-20">
-          {results.map((movie) => (
+          {results.map((movie) => {
             const isInMyList = myList.includes(movie.id);
             
-            <div
+            return (
+              <div
               key={movie.id}
               className="group cursor-pointer"
              onClick={() => onMoreInfo(movie)}
@@ -114,8 +115,9 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                   {movie.year} • {movie.genre.join(', ')}
                 </p>
               </div>
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
