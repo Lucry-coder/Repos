@@ -104,7 +104,7 @@ export const ContentRow: React.FC<ContentRowProps> = ({
                       ? 'translate-y-0 opacity-100' 
                       : 'translate-y-4 opacity-0'
                   }`}>
-                    <h3 className="text-white font-semibold text-sm mb-2 line-clamp-2">
+                    <h3 className="text-white font-semibold text-sm mb-2 line-clamp-2 drop-shadow-lg" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                       {movie.title}
                     </h3>
                     
