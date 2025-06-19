@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Plus, Info } from 'lucide-react';
+import { Play, Plus, Info, X } from 'lucide-react';
 import { Movie } from '../types';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
@@ -57,13 +57,20 @@ export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreIn
 
           <button
             onClick={() => onAddToList(movie)}
-            className={`flex items-center justify-center space-x-3 bg-gray-500/70 text-white px-8 py-3 rounded-md font-semibold backdrop-blur-sm transition-colors ${
+            className={`flex items-center justify-center space-x-3 bg-gray-500/70 text-white px-8 py-3 rounded-md font-semibold backdrop-blur-sm transition-all duration-200 group/button ${
               isInMyList 
                 ? 'hover:bg-red-500/90' 
                 : 'hover:bg-green-500/90'
             }`}
           >
-            <Plus size={24} />
+            {isInMyList ? (
+              <>
+                <Plus size={24} className="group-hover/button:hidden" />
+                <X size={24} className="hidden group-hover/button:block" />
+              </>
+            ) : (
+              <Plus size={24} />
+            )}
             <span>My List</span>
           </button>
 

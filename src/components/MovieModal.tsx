@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Play, Plus, ThumbsUp, Heart } from 'lucide-react';
 import { Movie } from '../types';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 interface MovieModalProps {
   movie: Movie;
@@ -21,6 +22,8 @@ export const MovieModal: React.FC<MovieModalProps> = ({
   currentLikes,
   isLiked,
 }) => {
+  const [myList] = useLocalStorage<string[]>('project-mylist', []);
+  const isInMyList = myList.includes(movie.id);
   const [isTrailerPlaying, setIsTrailerPlaying] = useState(false);
 
   return (
@@ -84,9 +87,20 @@ export const MovieModal: React.FC<MovieModalProps> = ({
 
               <button
                 onClick={() => onAddToList(movie)}
-                className="flex items-center justify-center space-x-3 bg-gray-600/80 text-white px-6 py-3 rounded-md hover:bg-gray-600 transition-colors font-semibold backdrop-blur-sm"
+                className={`flex items-center justify-center space-x-3 bg-gray-600/80 text-white px-6 py-3 rounded-md font-semibold backdrop-blur-sm transition-all duration-200 group/button ${
+                  isInMyList 
+                    ? 'hover:bg-red-500/90' 
+                    : 'hover:bg-green-500/90'
+                }`}
               >
-                <Plus size={20} />
+                {isInMyList ? (
+                  <>
+                    <Plus size={20} className="group-hover/button:hidden" />
+                    <X size={20} className="hidden group-hover/button:block" />
+                  </>
+                ) : (
+                  <Plus size={20} />
+                )}
                 <span>My List</span>
               </button>
             </div>
