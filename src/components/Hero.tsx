@@ -11,7 +11,7 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreInfo }) => {
-  const [myList] = useLocalStorage<string[]>('netflix-mylist', []);
+  const [myList] = useLocalStorage<string[]>('project-mylist', []);
   const isInMyList = myList.includes(movie.id);
 
   return (

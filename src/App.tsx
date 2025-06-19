@@ -19,10 +19,10 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
-  const [myList, setMyList] = useLocalStorage<string[]>('netflix-mylist', []);
+  const [myList, setMyList] = useLocalStorage<string[]>('project-mylist', []);
   const [searchSuggestions, setSearchSuggestions] = useState<Movie[]>([]);
-  const [movieLikes, setMovieLikes] = useLocalStorage<Record<string, number>>('netflix-likes', {});
-  const [userLikes, setUserLikes] = useLocalStorage<string[]>('netflix-user-likes', []);
+  const [movieLikes, setMovieLikes] = useLocalStorage<Record<string, number>>('project-likes', {});
+  const [userLikes, setUserLikes] = useLocalStorage<string[]>('project-user-likes', []);
 
   useEffect(() => {
     const handleScroll = () => {

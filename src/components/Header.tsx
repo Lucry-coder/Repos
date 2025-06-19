@@ -67,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={onLogoClick}
             className="text-red-600 text-2xl font-bold hover:text-red-500 transition-colors"
           >
-            NETFLIX
+            PROJECT
           </button>
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (

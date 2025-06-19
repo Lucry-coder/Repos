@@ -24,7 +24,7 @@ export const ContentRow: React.FC<ContentRowProps> = ({
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [hoveredMovie, setHoveredMovie] = useState<string | null>(null);
-  const [myList] = useLocalStorage<string[]>('netflix-mylist', []);
+  const [myList] = useLocalStorage<string[]>('project-mylist', []);
 
   const scroll = (direction: 'left' | 'right') => {
     if (!scrollRef.current) return;
