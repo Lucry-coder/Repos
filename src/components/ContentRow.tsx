@@ -137,7 +137,7 @@ export const ContentRow: React.FC<ContentRowProps> = ({
                           e.stopPropagation();
                           onAddToList(movie);
                         }}
-                        className={`p-2 rounded-full transition-colors ${
+                        className={`p-2 rounded-full transition-all duration-200 group/button ${
                           isMyListRow 
                             ? 'bg-red-600/80 text-white hover:bg-red-600' 
                             : isInMyList
@@ -147,6 +147,11 @@ export const ContentRow: React.FC<ContentRowProps> = ({
                       >
                         {isMyListRow ? (
                           <X size={16} />
+                        ) : isInMyList ? (
+                          <>
+                            <Plus size={16} className="group-hover/button:hidden" />
+                            <X size={16} className="hidden group-hover/button:block" />
+                          </>
                         ) : (
                           <Plus size={16} />
                         )}
