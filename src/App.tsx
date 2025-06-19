@@ -216,6 +216,7 @@ function App() {
           onLike={handleLike}
           currentLikes={movieLikes[selectedMovie.id] || selectedMovie.likes || 0}
           isLiked={userLikes.includes(selectedMovie.id)}
+          myList={myList}
         />
       )}
     </div>

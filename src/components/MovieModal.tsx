@@ -11,6 +11,7 @@ interface MovieModalProps {
   onLike: (movie: Movie) => void;
   currentLikes: number;
   isLiked: boolean;
+  myList: string[];
 }
 
 export const MovieModal: React.FC<MovieModalProps> = ({
@@ -21,8 +22,8 @@ export const MovieModal: React.FC<MovieModalProps> = ({
   onLike,
   currentLikes,
   isLiked,
+  myList,
 }) => {
-  const [myList] = useLocalStorage<string[]>('project-mylist', []);
   const isInMyList = myList.includes(movie.id);
   const [isTrailerPlaying, setIsTrailerPlaying] = useState(false);
 
