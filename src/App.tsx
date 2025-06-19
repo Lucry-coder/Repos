@@ -175,6 +175,7 @@ function App() {
             onPlay={handlePlay}
             onAddToList={handleAddToList}
             onMoreInfo={handleMoreInfo}
+            myList={myList}
           />
 
           <div className="relative -mt-16 z-10">

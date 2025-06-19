@@ -8,10 +8,10 @@ interface HeroProps {
   onPlay: (movie: Movie) => void;
   onAddToList: (movie: Movie) => void;
   onMoreInfo: (movie: Movie) => void;
+  myList: string[];
 }
 
-export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreInfo }) => {
-  const [myList] = useLocalStorage<string[]>('project-mylist', []);
+export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreInfo, myList }) => {
   const isInMyList = myList.includes(movie.id);
 
   return (
